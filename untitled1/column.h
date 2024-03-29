@@ -10,9 +10,17 @@
 
 typedef struct
 {
-    char Titre[255];
-    int Taille_logique;
-    int Taille_physique;
-    int donnees[256];
-}COLONNE;
+    char title[255];
+    int LS;
+    int PS;
+    int data[256];
+}COLUMN;
+
+/**
+* Create a column
+* @param1 : Column title
+* @return : Pointer to created column
+*/
+COLUMN *create_column(char *title);
+
 
