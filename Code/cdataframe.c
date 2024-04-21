@@ -1,42 +1,47 @@
 #include "cdataframe.h"
-#include "stdio.h"
-#include "stdlib.h"
-#include "string.h"
+#include <stdio.h>
+#include <stdlib.h>
+
 CDataframe* create_cdataframe(int capacity) {
     CDataframe* df = (CDataframe*)malloc(sizeof(CDataframe));
     if (df == NULL) {
+        return NULL;  // Gestion d'erreur de l'allocation mémoire
+    }
+    df->columns = malloc(sizeof(COLUMN*) * capacity);
+    if (df->columns == NULL) {
+        free(df);
         return NULL;
     }
+    df->num_columns = 0;
+    df->capacity = capacity;
     return df;
 }
 
-void print_cdataframe(CDataframe* df) {
-    if (df == NULL || df->num_columns == 0) {
-        printf("Le dataframe est vide ou nul.\n");
-        return;
-    }
-
-    // Print column headers
-    for (int i = 0; i < df->num_columns; ++i) {
-        printf("%s\t", df->columns[i]->title);  // Use \t for tabular display
-    }
-    printf("\n");
-
-    // Get the number of rows using the logical size of the first column
-    int num_rows = df->columns[0]->LS;
-
-    // Print the content of each row
-    for (int row = 0; row < num_rows; ++row) {
-        for (int col = 0; col < df->num_columns; ++col) {
-            // Make sure the column has enough data for this row
-            if (row < df->columns[col]->LS) {
-                printf("%d\t", df->columns[col]->data[row]);
-            } else {
-                printf("NULL\t");  // If there is no data for this row in the column
-            }
+void add_column(CDataframe* df, COLUMN* col) {
+    if (df->num_columns >= df->capacity) {
+        // Réallocation pour agrandir le tableau de colonnes
+        int new_capacity = df->capacity * 2;
+        COLUMN** new_columns = realloc(df->columns, sizeof(COLUMN*) * new_capacity);
+        if (new_columns == NULL) {
+            return;  // Gestion d'erreur ici
         }
-        printf ("\n");  // New line after each data row
+        df->columns = new_columns;
+        df->capacity = new_capacity;
+    }
+    df->columns[df->num_columns++] = col;
+}
+
+void print_cdataframe(CDataframe* df) {
+    printf("CDataframe with %d columns:\n", df->num_columns);
+    for (int i = 0; i < df->num_columns; i++) {
+        print_col(df->columns[i]);
     }
 }
 
-
+void free_cdataframe(CDataframe* df) {
+    for (int i = 0; i < df->num_columns; i++) {
+        delete_column(&(df->columns[i]));
+    }
+    free(df->columns);
+    free(df);
+}
