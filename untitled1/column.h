@@ -13,7 +13,7 @@ typedef struct
     char title[255];
     int LS;
     int PS;
-    int data[256];
+    int *data;
 }COLUMN;
 
 /**
@@ -22,5 +22,25 @@ typedef struct
 * @return : Pointer to created column
 */
 COLUMN *create_column(char *title);
+
+/**
+* @brief : Add a new value to a column
+* @param1 : Pointer to a column
+* @param2 : The value to be added
+* @return : 1 if the value is added 0 otherwise
+*/
+int insert_value(COLUMN *col, int value);
+
+/**
+* @brief : Free allocated memory
+* @param1 : Pointer to a column
+*/
+void delete_column(COLUMN **col);
+
+/**
+* @brief: Print a column content
+* @param: Pointer to a column
+*/
+void print_col(COLUMN *col);
 
 
