@@ -6,7 +6,7 @@
 int main() {
     int choice, value;
     char title[255];
-    CDataframe* df = create_cdataframe(5);  // Crée un dataframe avec une capacité initiale de 5 colonnes
+    CDataframe* df = create_cdataframe(5);  
 
     if (df == NULL) {
         printf("Failed to create CDataframe. Out of memory.\n");
@@ -25,7 +25,7 @@ int main() {
         switch (choice) {
             case 1:
                 printf("Enter column title: ");
-                scanf("%254s", title);  // Use %254s to limit string input size and prevent overflow
+                scanf("%254s", title);  
                 COLUMN* col = create_column(title);
                 if (col == NULL) {
                     printf("Failed to create column.\n");
