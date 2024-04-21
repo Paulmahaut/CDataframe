@@ -5,7 +5,7 @@
 #ifndef UNTITLED1_COLUMN_H
 #define UNTITLED1_COLUMN_H
 
-#endif //UNTITLED1_COLUMN_H
+
 
 
 typedef struct
@@ -44,3 +44,4 @@ void delete_column(COLUMN **col);
 void print_col(COLUMN *col);
 
 
+#endif //UNTITLED1_COLUMN_H

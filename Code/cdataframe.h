@@ -1,7 +1,7 @@
 #ifndef CDATAFRAME_H  //Prevent from multiple treatment
 #define CDATAFRAME_H
 
-#include "column.h" 
+#include "column.h"
 
 typedef struct {
     COLUMN** columns;  // Array of pointers to columns
@@ -11,7 +11,7 @@ typedef struct {
 
 
 CDataframe* create_cdataframe();
-void print_cdataframe(CDataframe* df) 
+void print_cdataframe(CDataframe* df) ;
 
 
 #endif // CDATAFRAME_H

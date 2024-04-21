@@ -7,6 +7,8 @@ CDataframe* create_cdataframe(int capacity) {
     if (df == NULL) {
         return NULL;
     }
+    return df;
+}
 
 void print_cdataframe(CDataframe* df) {
     if (df == NULL || df->num_columns == 0) {
