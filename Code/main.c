@@ -16,28 +16,22 @@ int main()
     print_col(mycol);
 //////////////////////////////////////////////////////////////
 
-    int initial_capacity = 10; // Capacité initiale pour le nombre de colonnes
+    int initial_capacity = 10;
     CDataframe* df = create_cdataframe(initial_capacity);
 
     if (df != NULL) {
         printf("CDataframe a été créé avec succès.\n");
 
-        // Test d'ajout de colonnes (exemple)
         for (int i = 0; i < initial_capacity; i++) {
-            // Supposons que vous avez une fonction add_column.
             char column_name[30];
             sprintf(column_name, "Colonne %d", i + 1);
             COLUMN* col = create_column(column_name);
         }
 
-        // Test d'affichage des informations du dataframe
-        // Supposons que vous avez une fonction qui imprime les informations du dataframe.
-        print_cdataframe(df); // Vous devrez implémenter cette fonction.
+        print_cdataframe(df);
 
     } else {
         printf("Échec de la création du CDataframe.\n");
     }
 
     return 0;
-
-}
