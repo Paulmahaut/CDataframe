@@ -1,5 +1,5 @@
 //
-// Created by abdel on 20/04/2024.
+// Created by abdel
 //
 #include "column.h"
 #include "stdio.h"
