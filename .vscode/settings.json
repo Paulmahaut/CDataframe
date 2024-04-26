@@ -1,5 +1,6 @@
 {
     "files.associations": {
         "stdlib.h": "c"
-    }
+    },
+    "cmake.sourceDirectory": "C:/Users/paulm/Documents/CDataframe/Code"
 }
