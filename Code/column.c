@@ -88,7 +88,8 @@ void delete_column(COLUMN **col)
 
 void print_col(COLUMN *col)
 {
-    printf("Data incoming");
+//    printf("Data incoming");
+    printf("Column title: %s\n", col->title);
     for (int i = 0; i < col->LS; i++)
     {
         printf("[%d]: %d\n", i, col->data[i]);
