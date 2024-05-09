@@ -45,3 +45,17 @@ void free_cdataframe(CDataframe* df) {
     free(df->columns);
     free(df);
 }
+
+void print_column_by_index(CDataframe* df, int index) {
+    if (index < 0 || index >= df->num_columns) {
+        printf("Invalid column index.\n");
+        return;
+    }
+
+    COLUMN* col = df->columns[index];
+    printf("Column '%s':\n", col->title);
+    for (int i = 0; i < col->LS; i++) {
+        printf("%d\n", col->data[i]);
+    }
+}
+

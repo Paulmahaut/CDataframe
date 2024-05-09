@@ -95,7 +95,3 @@ void print_col(COLUMN *col)
         printf("[%d]: %d\n", i, col->data[i]);
     }
 }
-
-
-
-

@@ -43,5 +43,4 @@ void delete_column(COLUMN **col);
 */
 void print_col(COLUMN *col);
 
-
 #endif //UNTITLED1_COLUMN_H

@@ -4,7 +4,8 @@
 #include <stdlib.h>
 
 int main() {
-    int choice, value;
+    int choice,choice2, value;
+    int index;
     char title[255];
     CDataframe* df = create_cdataframe(5);  
 
@@ -19,6 +20,7 @@ int main() {
         printf("2. Insert Value into a Column\n");
         printf("3. Print Dataframe\n");
         printf("4. Exit\n");
+        printf("5. Other functionalities\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
@@ -63,6 +65,27 @@ int main() {
             case 4:
                 free_cdataframe(df);
                 printf("Exiting program.\n");
+                return 0;
+
+            case 5:
+                printf("1. Printe value(s) of a column\n");
+                printf("2. Exit\n");
+                printf("Enter your choice: ");
+                scanf("%d", &choice2);
+                switch(choice2){
+                    case 1:
+                        printf("Enter column index (0 to %d): ", df->num_columns - 1);
+                        scanf("%d", &index);
+                        print_column_by_index(df,index);
+                        return 0;
+                    case 2:
+                        continue;
+                    default:
+                        printf("Invalid choice. Please choose again.\n");
+                
+                }
+            scanf("%d", &index);
+                print_column_by_index(df,index);
                 return 0;
 
             default:
