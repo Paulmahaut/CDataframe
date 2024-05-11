@@ -59,3 +59,17 @@ void print_column_by_index(CDataframe* df, int index) {
     }
 }
 
+
+void display_the_numbers_of_rows(CDataframe* df) {
+    int max = 0;
+    for (int i = 0; i < df->num_columns; i++) {
+        if (df->columns[i]->LS > max) {
+            max = df->columns[i]->LS;
+        }
+    }
+    printf("The number of rows is %d\n", max);
+}
+
+void display_the_numbers_of_columns(CDataframe* df) {
+    printf("The number of columns is %d\n", df->num_columns);
+}
