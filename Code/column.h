@@ -42,5 +42,5 @@ void delete_column(COLUMN **col);
 * @param: Pointer to a column
 */
 void print_col(COLUMN *col);
-
+void delete_column(COLUMN **col)
 #endif //UNTITLED1_COLUMN_H

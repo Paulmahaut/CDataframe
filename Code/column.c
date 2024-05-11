@@ -95,3 +95,16 @@ void print_col(COLUMN *col)
         printf("[%d]: %d\n", i, col->data[i]);
     }
 }
+
+void rename_column(COLUMN *col, char *new_title)
+{
+    strcpy(col->title, new_title);
+}
+
+void delete_column(COLUMN **col)
+{
+    free((*col)->data);
+    free(*col);
+    *col = NULL;
+}
+

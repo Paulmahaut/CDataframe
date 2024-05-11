@@ -13,5 +13,6 @@ CDataframe* create_cdataframe(int capacity);
 void add_column(CDataframe* df, COLUMN* col);
 void print_cdataframe(CDataframe* df);
 void print_column_by_index(CDataframe* df, int index); 
-
+void display_the_numbers_of_rows(CDataframe* df) ;
+void display_the_numbers_of_columns(CDataframe* df);
 #endif // CDATAFRAME_H

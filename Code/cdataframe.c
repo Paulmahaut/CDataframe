@@ -73,3 +73,4 @@ void display_the_numbers_of_rows(CDataframe* df) {
 void display_the_numbers_of_columns(CDataframe* df) {
     printf("The number of columns is %d\n", df->num_columns);
 }
+

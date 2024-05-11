@@ -116,8 +116,25 @@ int main() {
                     case 1:
                     case 2:
                     case 3:
-                    case 4:
-                    case 5:
+
+                    case 4:   
+                     printf("Enter column index (0 to %d): ", df->num_columns - 1);
+                    scanf("%d", &index);
+                    delete_column(df->columns[index]);
+                    break;
+                  case 5:
+    printf("Enter column index (0 to %d): ", df->num_columns - 1);
+    scanf("%d", &index);
+    if (index < 0 || index >= df->num_columns) {
+        printf("Invalid column index.\n");
+    } else {
+        printf("Enter new title: ");
+        scanf("%254s", title);
+        rename_column(df->columns[index], title);
+        printf("Column '%d' renamed to '%s'.\n", index, title);
+    }
+    break;  // Ajouter un break ici pour éviter le fall-through
+
                     case 6:
                     case 7:
                     case 8:
