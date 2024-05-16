@@ -73,3 +73,40 @@ void display_the_numbers_of_rows(CDataframe* df) {
 void display_the_numbers_of_columns(CDataframe* df) {
     printf("The number of columns is %d\n", df->num_columns);
 }
+
+
+void display_the_numbers_of_cells_equal_to_x(CDataframe* df, int x) {
+    int count = 0;
+    for (int i = 0; i < df->num_columns; i++) {
+        for (int j = 0; j < df->columns[i]->LS; j++) {
+            if (df->columns[i]->data[j] == x) {
+                count++;
+            }
+        }
+    }
+    printf("The number of cells equal to %d is %d\n", x, count);
+}
+
+void display_the_numbers_of_cells_greater_than_x(CDataframe* df, int x) {
+    int count = 0;
+    for (int i = 0; i < df->num_columns; i++) {
+        for (int j = 0; j < df->columns[i]->LS; j++) {
+            if (df->columns[i]->data[j] > x) {
+                count++;
+            }
+        }
+    }
+    printf("The number of cells greater than %d is %d\n", x, count);
+}
+
+void display_the_numbers_of_cells_less_than_x(CDataframe* df, int x) {
+    int count = 0;
+    for (int i = 0; i < df->num_columns; i++) {
+        for (int j = 0; j < df->columns[i]->LS; j++) {
+            if (df->columns[i]->data[j] < x) {
+                count++;
+            }
+        }
+    }
+    printf("The number of cells less than %d is %d\n", x, count);
+}

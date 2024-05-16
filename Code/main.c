@@ -6,7 +6,7 @@
 int main() {
     int choice,choice2, value;
     int index;
-    int mainChoice, subChoice, limit;
+    int mainChoice, subChoice, limit,x;
     char title[255];
     CDataframe* df = create_cdataframe(5);  
 
@@ -69,7 +69,7 @@ int main() {
                  
 
     while (1) {
-        printf("\nMenu Principal:\n");
+        printf("\nOther Functionalities menu\n");
         printf("1. Displaying\n");
         printf("2. Usual Operations\n");
         printf("3. Analysis and Statistics\n");
@@ -144,17 +144,28 @@ int main() {
                             display_the_numbers_of_columns(df);
                             break; 
                     case 3:
+                        printf("Enter the value to search for: ");
+                        scanf("%d", &x);
+                        display_the_numbers_of_cells_equal_to_x(df, x);
+                        break;
                         
                     case 4:
+                        printf("Enter the value to search for: ");
+                        scanf("%d", &x);
+                        display_the_numbers_of_cells_greater_than_x(df, x);
+                        break;
                     case 5:
-                        printf("This functionality is not yet available.\n");
+                        printf("Enter the value to search for: ");
+                        scanf("%d", &x);    
+                        void display_the_numbers_of_cells_less_than_x(CDataframe* df, int x);
                         break;
                     default:
                         printf("Invalid choice. Please choose again.\n");
                 }
                 break;
             case 4: // Exit
-                continue; //ne fonctionne pas
+                printf("Exiting to main menu.\n");
+                break;
             default:
                 printf("Invalid choice. Please choose again.\n");
         }
