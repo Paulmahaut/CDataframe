@@ -186,3 +186,23 @@ int replace_value_CD(CDataframe* df, int row, int col, int x) {
     df->columns[row]->data[col] = x;
     return 1;
 }
+
+
+void hard_fill(CDataframe* df)
+{
+    COLUMN* col1= create_column("COL1");
+    COLUMN* col2 = create_column("COL2");
+    COLUMN * col3 = create_column("COL3");
+    COLUMN* col4 = create_column("COL4");
+    for (int i=0; i<5; i++)
+    {
+        insert_value(col1, i);
+        insert_value(col2, 4+i);
+        insert_value(col3, 9+i);
+        insert_value(col4, 14+i);
+    }
+    add_column(df, col1);
+    add_column(df,col2);
+    add_column(df,col3);
+    add_column(df, col4);
+}

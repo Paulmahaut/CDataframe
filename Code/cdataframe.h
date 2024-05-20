@@ -13,6 +13,11 @@ CDataframe* create_cdataframe(int capacity);
 
 void add_column(CDataframe* df, COLUMN* col);
 
+
+void hard_fill(CDataframe * df);
+
+
+
 /**
  * @brief Delete a whole row from the Dataframe at position index
  * @param df pointer to CDataframe
@@ -20,6 +25,7 @@ void add_column(CDataframe* df, COLUMN* col);
  * @return integer either 0 or 1 to know if the function was successful
  *
  */
+
 int delete_row_CD(CDataframe* df, int index);
 
 /**
