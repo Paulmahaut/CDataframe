@@ -23,6 +23,7 @@ void display_menu() {
     printf("15 Display a part of the CDatframe rows \n");
     printf("16 Display a part of the CDatframe columns \n");
     printf("17 : Display the name of the columns\n");
+    printf("18 : Add a row to the CDataframe\n");
     printf("0. Exit\n");
 }
 
@@ -30,6 +31,7 @@ int main() {
     CDataframe* df = NULL;
     int choice, choice2 ,col_index, row_index, value, x,nb_rows, nb_cols;
     char titre[255];
+
 
     while (1) {
         display_menu();
@@ -246,6 +248,19 @@ int main() {
                     display_column_names(df);
                 }
                 break;
+            case 18:
+                if (df == NULL) {
+                    printf("CDataframe not created yet.\n");
+                } else {
+                    int* row = (int*)malloc(df->num_columns * sizeof(int));
+                    for (int i = 0; i < df->num_columns; i++) {
+                        printf("Enter value for column %d: ", i);
+                        scanf("%d", &row[i]);
+                    }
+                    add_row(df, row);
+                    free(row);
+                }
+                break;  
             case 0:
                 if (df != NULL) {
                     free_cdataframe(df);

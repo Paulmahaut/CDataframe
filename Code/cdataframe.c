@@ -245,3 +245,11 @@ void display_column_names(CDataframe* df)
         printf("Column %d: %s\n", i, df->columns[i]->title);
     }
 }
+
+void add_row(CDataframe* df, int* row)
+{
+    for (int i = 0; i < df->num_columns; i++)
+    {
+        insert_value(df->columns[i], row[i]);
+    }
+}
