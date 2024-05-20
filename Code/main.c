@@ -21,6 +21,7 @@ void display_menu() {
     printf("13. Display a column by index\n");
     printf("14. Print the entire CDataframe\n");
     printf("15 Display a part of the CDatframe rows \n");
+    printf("16 Display a part of the CDatframe columns \n");
     printf("0. Exit\n");
 }
 
