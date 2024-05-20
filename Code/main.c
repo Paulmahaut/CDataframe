@@ -22,6 +22,7 @@ void display_menu() {
     printf("14. Print the entire CDataframe\n");
     printf("15 Display a part of the CDatframe rows \n");
     printf("16 Display a part of the CDatframe columns \n");
+    printf("17 : Display the name of the columns\n");
     printf("0. Exit\n");
 }
 
@@ -236,6 +237,13 @@ int main() {
                     printf("Enter end index: ");
                     scanf("%d", &row_index);
                     display_part_of_the_Cdataframe_columns(df, col_index, row_index);
+                }
+                break;
+            case 17: 
+                if (df == NULL) {
+                    printf("CDataframe not created yet.\n");
+                } else {
+                    display_column_names(df);
                 }
                 break;
             case 0:

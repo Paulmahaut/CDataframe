@@ -237,3 +237,11 @@ void display_part_of_the_Cdataframe_columns(CDataframe* df, int start, int end)
         print_col(df->columns[i]);
     }
 }
+
+void display_column_names(CDataframe* df)
+{
+    for (int i = 0; i < df->num_columns; i++)
+    {
+        printf("Column %d: %s\n", i, df->columns[i]->title);
+    }
+}
