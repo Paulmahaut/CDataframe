@@ -78,8 +78,7 @@ void delete_column(COLUMN **col)
 
     // Free the instance of the COLUMN structure col
 
-    /** This line is sufficient as it is ( no need to put free((*col)->data); )  but
-    it feels better to free all the data array alone and then the structure, better safe than sorry :D **/
+
     free(*col);
 
     // Set col pointer to NULL so we don't have hanging pointers

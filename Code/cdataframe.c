@@ -31,6 +31,57 @@ void add_column(CDataframe* df, COLUMN* col) {
     df->columns[df->num_columns++] = col;
 }
 
+int delete_row_CD(CDataframe* df, int index)
+{
+    //Check if index is invalid (negative or greater or equal than the logical size of all columns)
+
+    for(int i=0; i<index;i++)
+    {
+        if (df->columns[0]->LS <= index)
+            return 0;
+    }
+    if (index < 0 || (df->num_columns < 0))
+    {
+        return 0;
+    }
+
+    for (int i = 0; i < df->num_columns; ++i) {
+        COLUMN* column = df->columns[i];
+
+        // Shift elements up to overwrite the deleted row
+        for (int j = index; j < column->LS - 1; ++j) {
+            column->data[j] = column->data[j + 1];
+        }
+
+        // Decrement size of column
+        column->LS--;
+    }
+    return 1;
+}
+
+int delete_column_CD(CDataframe* df, int index)
+{
+    // Check if the index is good
+    if (index < 0 || index >= df->num_columns)
+    {
+        return 0;
+    }
+
+    // Free the memory to delete the column
+    free(df->columns[index]->data);
+    free(df->columns[index]);
+
+    // Fill the gap in the array
+    for (int i = index; i < df->num_columns - 1; i++)
+    {
+        df->columns[i] = df->columns[i + 1];
+    }
+
+    // Decrement the number of columns
+    df->num_columns--;
+    return 1;
+}
+
 void print_cdataframe(CDataframe* df) {
     printf("CDataframe with %d columns:\n", df->num_columns);
     for (int i = 0; i < df->num_columns; i++) {
