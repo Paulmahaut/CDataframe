@@ -94,3 +94,122 @@ void print_col(COLUMN *col)
         printf("[%d]: %d\n", i, col->data[i]);
     }
 }
+
+int occurence_x(COLUMN* col, int x)
+{
+    int occu = 0;
+    int i = 0;
+
+    // We search for x in the elements of the array
+    for (i;i<col->LS;i++)
+    {
+        if(col->data[i] == x)
+        {
+            occu++;
+        }
+    }
+    return occu;
+}
+
+int return_value(COLUMN* col,int x)
+{
+    int value = 0;
+    // We check for valid index
+    if (x < 0 || x>=col->LS)
+    {
+        return -1;
+    }
+    else
+    {
+        value = col->data[x];
+    }
+    return value;
+}
+
+int occurences_greater_x (COLUMN* col,int x)
+{
+    int occu = 0;
+    int i = 0;
+
+    // We search for values greater than x in the elements of the array
+    for (i;i<col->LS;i++)
+    {
+        if(col->data[i] > x)
+        {
+            occu++;
+        }
+    }
+    return occu;
+}
+
+
+int occurences_lower_x (COLUMN* col,int x)
+{
+    int occu = 0;
+    int i = 0;
+
+    // We search for values greater than x in the elements of the array
+    for (i;i<col->LS;i++)
+    {
+        if(col->data[i] < x)
+        {
+            occu++;
+        }
+    }
+    return occu;
+}
+
+int* index_equal_x(COLUMN * col, int x)
+{
+    int* index;
+    int occu=0;
+    index = (int*) malloc(col->LS * sizeof(int));
+    int i = 0;
+
+    // We search for values equal to x in the elements of the array
+    for (i;i<col->LS;i++)
+    {
+        if(col->data[i] == x)
+        {
+            index[occu++] =i;
+        }
+    }
+    return index;
+}
+
+int* index_greater_x (COLUMN* col,int x)
+{
+    int* index;
+    int occu=0;
+    index = (int*) malloc(col->LS * sizeof(int));
+    int i = 0;
+
+    // We search for values greater than x in the elements of the array
+    for (i;i<col->LS;i++)
+    {
+        if(col->data[i] > x)
+        {
+            index[occu++] = i;
+        }
+    }
+    return index;
+}
+
+
+int* index_lower_x (COLUMN* col,int x)
+{
+    int* index;
+    int occu=0;
+    index = (int*) malloc(col->LS * sizeof(int));
+    int i = 0;
+
+    // We search for values lower than x in the elements of the array
+    for (i;i<col->LS;i++)
+    {
+        if(col->data[i] > x)
+        {
+            index[occu++] = i;
+        }
+    }
+    return index;
+}

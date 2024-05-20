@@ -43,4 +43,71 @@ void delete_column(COLUMN **col);
 */
 void print_col(COLUMN *col);
 
+/**
+ * @brief Find the number of occurences of a value x
+ * @param1 Pointer to a column
+ * @param2 Integer to find x
+ * @return Number of occurences of x
+ */
+int occurence_x(COLUMN*, int);
+
+
+
+/***
+ *Return the value at position x if given a valid index
+ * @param1 Pointer to a column
+ * @param2 Index to find the value
+ * @return Integer value x
+ */
+int return_value (COLUMN*,int);
+
+
+
+/***
+ *Return the number of values greater than x
+ * @param1 Pointer to a column
+ * @param2 Integer to do the comparison
+ * @return Number of occurrences
+ */
+int occurences_greater_x (COLUMN*,int);
+
+/***
+ *Return the number of values lower than x
+ * @param1 Pointer to a column
+ * @param2 Integer to do the comparison
+ * @return Number of occurrences
+ */
+int occurences_lower_x (COLUMN*,int);
+
+
+
+/***
+ * Return a list of the indexes of the values equal to x
+ * @param Pointer to column
+ * @param integer x to do the comparison
+ * @return Array of indexes
+ */
+int* index_equal_x(COLUMN * col, int x);
+
+
+
+/***
+ *Return a list of the index of the values greater than x
+ * @param1 Pointer to a column
+ * @param2 Integer to do the comparison
+ * @return Array of indexes
+ */
+int* index_greater_x (COLUMN*,int);
+
+/***
+*@brief Return a list of the index of the values lower than x
+ * @param1 Pointer to a column
+ * @param2 Integer to do the comparison
+ * @return Array of indexes
+***/
+int* index_lower_x (COLUMN*,int);
+
+
+
+
 #endif //UNTITLED1_COLUMN_H
