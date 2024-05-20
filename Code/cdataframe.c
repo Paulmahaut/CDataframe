@@ -206,3 +206,34 @@ void hard_fill(CDataframe* df)
     add_column(df,col3);
     add_column(df, col4);
 }
+
+void display_part_of_the_Cdataframe_rows(CDataframe* df, int start, int end)
+{
+    if (start < 0 || end < 0 || start > end)
+    {
+        printf("Invalid range\n");
+        return;
+    }
+    for (int i = 0; i < df->num_columns; i++)
+    {
+        printf("Column %d\n", i);
+        for (int j = start; j <= end; j++)
+        {
+            printf("%d\n", return_value(df->columns[i], j));
+        }
+    }
+}
+
+void display_part_of_the_Cdataframe_columns(CDataframe* df, int start, int end)
+{
+    if (start < 0 || end < 0 || start > end)
+    {
+        printf("Invalid range\n");
+        return;
+    }
+    for (int i = start; i <= end; i++)
+    {
+        printf("Column %d\n", i);
+        print_col(df->columns[i]);
+    }
+}

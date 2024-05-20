@@ -10,5 +10,11 @@
   "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\untitled1.dir\\column.c.obj -c C:\\Users\\paulm\\Documents\\CDataframe\\Code\\column.c",
   "file": "C:/Users/paulm/Documents/CDataframe/Code/column.c",
   "output": "CMakeFiles/untitled1.dir/column.c.obj"
+},
+{
+  "directory": "C:/Users/paulm/Documents/CDataframe/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\untitled1.dir\\cdataframe.c.obj -c C:\\Users\\paulm\\Documents\\CDataframe\\Code\\cdataframe.c",
+  "file": "C:/Users/paulm/Documents/CDataframe/Code/cdataframe.c",
+  "output": "CMakeFiles/untitled1.dir/cdataframe.c.obj"
 }
 ]

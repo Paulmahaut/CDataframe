@@ -20,6 +20,7 @@ void display_menu() {
     printf("12. Check existence of a value in the CDataframe\n");
     printf("13. Display a column by index\n");
     printf("14. Print the entire CDataframe\n");
+    printf("15 Display a part of the CDatframe rows \n");
     printf("0. Exit\n");
 }
 
@@ -49,7 +50,7 @@ int main() {
                     printf("CDataframe not created yet.\n");
                 }
                 else {
-                    printf("Name your new column");
+                    printf("Name your new column : ");
                     scanf("%s",titre);
                     COLUMN* new_col = create_column(titre);
                     add_column(df, new_col);
@@ -212,6 +213,28 @@ int main() {
                     printf("CDataframe not created yet.\n");
                 } else {
                     print_cdataframe(df);
+                }
+                break;
+            case 15:
+                if (df == NULL) {
+                    printf("CDataframe not created yet.\n");
+                } else {
+                    printf("Enter start index: ");
+                    scanf("%d", &col_index);
+                    printf("Enter end index: ");
+                    scanf("%d", &row_index);
+                    display_part_of_the_Cdataframe_rows(df, col_index, row_index);
+                }
+                break;
+            case 16:
+                if (df == NULL) {
+                    printf("CDataframe not created yet.\n");
+                } else {
+                    printf("Enter start index: ");
+                    scanf("%d", &col_index);
+                    printf("Enter end index: ");
+                    scanf("%d", &row_index);
+                    display_part_of_the_Cdataframe_columns(df, col_index, row_index);
                 }
                 break;
             case 0:

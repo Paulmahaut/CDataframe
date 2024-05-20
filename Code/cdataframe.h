@@ -46,6 +46,11 @@ void display_the_numbers_of_cells_greater_than_x(CDataframe* df, int x);
 
 void display_the_numbers_of_cells_less_than_x(CDataframe* df, int x);
 
+void display_part_of_the_Cdataframe_rows(CDataframe* df, int start, int end);
+
+
+void display_part_of_the_Cdataframe_columns(CDataframe* df, int start, int end);
+
 /**
  * Find if the value x given exists in the dataframe
  * @param1 Pointer to Cdataframe
