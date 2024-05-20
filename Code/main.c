@@ -27,7 +27,9 @@ void display_menu() {
     printf("0. Exit\n");
 }
 
-int main() {
+
+
+    int main() {
     CDataframe* df = NULL;
     int choice, choice2 ,col_index, row_index, value, x,nb_rows, nb_cols;
     char titre[255];
@@ -36,12 +38,14 @@ int main() {
     while (1) {
         display_menu();
         printf("Enter your choice: ");
-        scanf("%d", &choice);
+        scanf(" %d",&choice );
+        printf("\n");
 
         switch (choice) {
             case 1:
                 printf("Enter capacity for the CDataframe: ");
                 scanf("%d", &value);
+                printf("\n");
                 df = create_cdataframe(value);
                 if (df == NULL) {
                     printf("Failed to create CDataframe.\n");
@@ -56,6 +60,7 @@ int main() {
                 else {
                     printf("Name your new column : ");
                     scanf("%s",titre);
+                    printf("\n");
                     COLUMN* new_col = create_column(titre);
                     add_column(df, new_col);
                     printf("Column added to the CDataframe.\n");
@@ -70,38 +75,50 @@ int main() {
                 else
                 {
                     printf("Choose 1 to Hard fill and 2 to fill by hand : ");
-                    scanf("%d",&choice2);
+                    scanf(" %d",&choice2);
+                    printf("\n");
                     switch (choice2){
                         case 1:
                         {
                             hard_fill(df);
-
+                            printf("Dataframe hard filled successfully");
+                            printf("\n");
                         }
                     break;
                         case 2:
 
                         printf("How many rows ?");
-                        scanf("%d",&nb_rows);
+                        scanf(" %d",&nb_rows);
+                            printf("\n");
                         int a;
+
                             printf("\nHow many columns ?");
-                            scanf("%d", &nb_cols);
+                            scanf(" %d", &nb_cols);
+                            printf("\n");
                             for (int i = 0; i< nb_cols; i++)
                             {
-                                char *ti = NULL;
+                                char ti[255];
                                 printf("Give the title of your column : ");
-                                scanf("%s",ti);
-                                add_column(df, create_column(ti));
+                                scanf(" %s",ti);
+                                printf("\n");
+                                COLUMN *col = create_column(ti);
+                                add_column(df, col);
                             }
                             for ( int i =0; i< nb_rows; i++)
                             {
-                                printf("Insert a value to add");
-                                scanf("%d", &value);
-                                a=insert_value(df->columns[i], value);
-                                if (!a)
+                                for(int j=0; j<nb_cols; j++)
                                 {
-                                    printf("Previous insertion failed...");
+                                    printf("Insert a value to add at position [%d,%d]\n", j,i);
+                                    scanf(" %d", &value);
+                                    printf("\n");
+                                    a=insert_value(df->columns[i], value);
+                                    if (!a)
+                                    {
+                                        printf("Previous insertion failed...\n");
+                                    }
                                 }
                             }
+
                     }
                     break;
 
@@ -112,6 +129,7 @@ int main() {
                 } else {
                     printf("Enter index of column to delete: ");
                     scanf("%d", &col_index);
+                    printf("\n");
                     if (delete_column_CD(df, col_index)) {
                         printf("Column deleted from the CDataframe.\n");
                     } else {
@@ -124,7 +142,8 @@ int main() {
                     printf("CDataframe not created yet.\n");
                 } else {
                     printf("Enter index of row to delete: ");
-                    scanf("%d", &row_index);
+                    scanf(" %d", &row_index);
+                    printf("\n");
                     if (delete_row_CD(df, row_index)) {
                         printf("Row deleted from the CDataframe.\n");
                     } else {
@@ -137,11 +156,14 @@ int main() {
                     printf("CDataframe not created yet.\n");
                 } else {
                     printf("Enter row index: ");
-                    scanf("%d", &row_index);
+                    scanf(" %d", &row_index);
+                    printf("\n");
                     printf("Enter column index: ");
-                    scanf("%d", &col_index);
+                    scanf(" %d", &col_index);
+                    printf("\n");
                     printf("Enter new value: ");
-                    scanf("%d", &value);
+                    scanf(" %d", &value);
+                    printf("\n");
                     if (replace_value_CD(df, row_index, col_index, value)) {
                         printf("Value replaced in the CDataframe.\n");
                     } else {
@@ -169,6 +191,7 @@ int main() {
                 } else {
                     printf("Enter value x: ");
                     scanf("%d", &x);
+                    printf("\n");
                     display_the_numbers_of_cells_equal_to_x(df, x);
                 }
                 break;
@@ -178,6 +201,7 @@ int main() {
                 } else {
                     printf("Enter value x: ");
                     scanf("%d", &x);
+                    printf("\n");
                     display_the_numbers_of_cells_greater_than_x(df, x);
                 }
                 break;
@@ -187,6 +211,7 @@ int main() {
                 } else {
                     printf("Enter value x: ");
                     scanf("%d", &x);
+                    printf("\n");
                     display_the_numbers_of_cells_less_than_x(df, x);
                 }
                 break;
@@ -196,6 +221,7 @@ int main() {
                 } else {
                     printf("Enter value to search: ");
                     scanf("%d", &x);
+                    printf("\n");
                     if (existence_of_x(df, x)) {
                         printf("Value exists in the CDataframe.\n");
                     } else {
@@ -209,6 +235,7 @@ int main() {
                 } else {
                     printf("Enter index of column to display: ");
                     scanf("%d", &col_index);
+                    printf("\n");
                     print_column_by_index(df, col_index);
                 }
                 break;
@@ -225,8 +252,10 @@ int main() {
                 } else {
                     printf("Enter start index: ");
                     scanf("%d", &col_index);
+                    printf("\n");
                     printf("Enter end index: ");
                     scanf("%d", &row_index);
+                    printf("\n");
                     display_part_of_the_Cdataframe_rows(df, col_index, row_index);
                 }
                 break;
@@ -236,8 +265,10 @@ int main() {
                 } else {
                     printf("Enter start index: ");
                     scanf("%d", &col_index);
+                    printf("\n");
                     printf("Enter end index: ");
                     scanf("%d", &row_index);
+                    printf("\n");
                     display_part_of_the_Cdataframe_columns(df, col_index, row_index);
                 }
                 break;
@@ -256,6 +287,7 @@ int main() {
                     for (int i = 0; i < df->num_columns; i++) {
                         printf("Enter value for column %d: ", i);
                         scanf("%d", &row[i]);
+                        printf("\n");
                     }
                     add_row(df, row);
                     free(row);
@@ -269,6 +301,7 @@ int main() {
                 return 0;
             default:
                 printf("Invalid choice. Please try again.\n");
+                free(&choice);
         }
     }
     return 0;
