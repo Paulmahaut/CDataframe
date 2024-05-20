@@ -95,6 +95,24 @@ void print_col(COLUMN *col)
     }
 }
 
+
+int return_value(COLUMN* col,int x)
+{
+    int value = 0;
+    // We check for valid index
+    if (x < 0 || x>=col->LS)
+    {
+        return -1;
+    }
+    else
+    {
+        value = col->data[x];
+    }
+    return value;
+}
+
+
+
 int occurence_x(COLUMN* col, int x)
 {
     int occu = 0;
@@ -111,20 +129,7 @@ int occurence_x(COLUMN* col, int x)
     return occu;
 }
 
-int return_value(COLUMN* col,int x)
-{
-    int value = 0;
-    // We check for valid index
-    if (x < 0 || x>=col->LS)
-    {
-        return -1;
-    }
-    else
-    {
-        value = col->data[x];
-    }
-    return value;
-}
+
 
 int occurences_greater_x (COLUMN* col,int x)
 {

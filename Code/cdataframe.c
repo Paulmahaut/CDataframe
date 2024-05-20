@@ -1,4 +1,5 @@
 #include "cdataframe.h"
+#include "column.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -34,16 +35,17 @@ void add_column(CDataframe* df, COLUMN* col) {
 int delete_row_CD(CDataframe* df, int index)
 {
     //Check if index is invalid (negative or greater or equal than the logical size of all columns)
-
-    for(int i=0; i<index;i++)
-    {
-        if (df->columns[0]->LS <= index)
-            return 0;
-    }
     if (index < 0 || (df->num_columns < 0))
     {
         return 0;
     }
+
+    for(int i=0; i<index;i++)
+    {
+        if (df->columns[i]->LS <= index)
+            return 0;
+    }
+
 
     for (int i = 0; i < df->num_columns; ++i) {
         COLUMN* column = df->columns[i];
@@ -129,11 +131,8 @@ void display_the_numbers_of_columns(CDataframe* df) {
 void display_the_numbers_of_cells_equal_to_x(CDataframe* df, int x) {
     int count = 0;
     for (int i = 0; i < df->num_columns; i++) {
-        for (int j = 0; j < df->columns[i]->LS; j++) {
-            if (df->columns[i]->data[j] == x) {
-                count++;
-            }
-        }
+
+        count += occurence_x(df->columns[i], x);
     }
     printf("The number of cells equal to %d is %d\n", x, count);
 }
@@ -141,11 +140,8 @@ void display_the_numbers_of_cells_equal_to_x(CDataframe* df, int x) {
 void display_the_numbers_of_cells_greater_than_x(CDataframe* df, int x) {
     int count = 0;
     for (int i = 0; i < df->num_columns; i++) {
-        for (int j = 0; j < df->columns[i]->LS; j++) {
-            if (df->columns[i]->data[j] > x) {
-                count++;
-            }
-        }
+        // We can use the function that we previously created
+        count += occurences_greater_x(df->columns[i], x);
     }
     printf("The number of cells greater than %d is %d\n", x, count);
 }
@@ -153,11 +149,40 @@ void display_the_numbers_of_cells_greater_than_x(CDataframe* df, int x) {
 void display_the_numbers_of_cells_less_than_x(CDataframe* df, int x) {
     int count = 0;
     for (int i = 0; i < df->num_columns; i++) {
-        for (int j = 0; j < df->columns[i]->LS; j++) {
-            if (df->columns[i]->data[j] < x) {
-                count++;
-            }
-        }
+            count += occurences_lower_x(df->columns[i], x);
+
     }
     printf("The number of cells less than %d is %d\n", x, count);
+}
+
+int existence_of_x(CDataframe* df, int x)
+{
+    int count = 0;
+    for (int i = 0; i < df->num_columns; i++) {
+            count += occurence_x(df->columns[i], x);
+
+    }
+    if (!count)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
+}
+
+
+int replace_value_CD(CDataframe* df, int row, int col, int x) {
+
+    if (x < 0 || (df->num_columns < 0)) {
+        return 0;
+    }
+    for (int i = 0; i < row; i++) {
+        if (df->columns[i]->LS < row)
+            return 0;
+    }
+
+    df->columns[row]->data[col] = x;
+    return 1;
 }
