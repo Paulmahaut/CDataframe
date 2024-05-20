@@ -53,6 +53,7 @@ void display_part_of_the_Cdataframe_columns(CDataframe* df, int start, int end);
 
 void display_column_names(CDataframe* df);
 
+void add_row(CDataframe* df, int* values, int num_values);
 /**
  * Find if the value x given exists in the dataframe
  * @param1 Pointer to Cdataframe
